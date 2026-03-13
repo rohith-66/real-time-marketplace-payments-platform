@@ -1,4 +1,37 @@
 {
-    "description": "Schema for marketplace payment lifecycle events",
-    "status": "draft"
+    "event_name": "marketplace_payment_event",
+    "description": "Marketplace payment lifecycle event emitted by a platform similar to DoorDash or Uber Eats.",
+    "fields": [
+      { "name": "event_id", "type": "string", "nullable": false, "description": "Unique identifier for the event" },
+      { "name": "order_id", "type": "string", "nullable": false, "description": "Unique order identifier" },
+      { "name": "customer_id", "type": "string", "nullable": false, "description": "Unique customer identifier" },
+      { "name": "seller_id", "type": "string", "nullable": false, "description": "Unique seller identifier" },
+      { "name": "city", "type": "string", "nullable": false, "description": "City where the order was placed" },
+      { "name": "order_category", "type": "string", "nullable": false, "description": "Marketplace order category" },
+      { "name": "payment_method", "type": "string", "nullable": false, "description": "Payment method used by customer" },
+      { "name": "event_type", "type": "string", "nullable": false, "description": "Payment lifecycle event type" },
+      { "name": "order_amount", "type": "double", "nullable": false, "description": "Total order amount paid by customer" },
+      { "name": "platform_fee", "type": "double", "nullable": false, "description": "Fee retained by the marketplace platform" },
+      { "name": "seller_payout", "type": "double", "nullable": false, "description": "Amount payable to seller" },
+      { "name": "currency", "type": "string", "nullable": false, "description": "Transaction currency" },
+      { "name": "event_timestamp", "type": "string", "nullable": false, "description": "UTC timestamp of event creation" }
+    ],
+    "allowed_event_types": [
+      "payment_authorized",
+      "payment_captured",
+      "refund_issued",
+      "payout_sent",
+      "payment_failed"
+    ],
+    "allowed_payment_methods": [
+      "card",
+      "wallet",
+      "upi"
+    ],
+    "allowed_order_categories": [
+      "food_delivery",
+      "groceries",
+      "pharmacy",
+      "retail"
+    ]
   }
